@@ -6,21 +6,23 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Pergunta1",
+        enunciado: "Quais são as  soluções que a escola está buscando  para a inclusão social, bem como as questões relacionadas aos direitos dos povos originários e como isso afeta os impactos causados pelo desmatamento ?",
         alternativas: [
-            "alternativa1", "alternativa2"
+            "Técnicas alternativas inovadoras", "Ensino multidisciplinar"
         ]
     },
     {
-        enunciado: "Pergunta2",
+        enunciado: "Qual o papel fundamental dos povos indígenas na luta contra a crise climática e preservação ambiental?",
         alternativas: [
-            "alternativa1", "alternativa2"
+            "Eles têm mostrado que é possível preservar a biodiversidade, manter os serviços ecossistêmicos e acalmar os efeitos das mudanças climáticas.", 
+            "Eles protegem e promovem a biodiversidade através de práticas tradicionais de manejo sustentável dos recursos naturais."
         ]
     },
     {
-        enunciado: "Pergunta3",
+        enunciado: "Você acredita que  o conhecimento da cultura desenvolvida nas escola indígenas pode melhorar o entendimento da comunidade  em relação às mudanças climáticas atuais ?",
         alternativas: [
-            "alternativa1", "alternativa2"
+            "Sim, eu acredito que pode ser uma grande contribuição .", 
+            "Não, pois o método empregado não é benéfico para o meio ambiente ."
         ]
     }
 ];
@@ -31,5 +33,16 @@ let perguntaAtual;
 function mostraPergunta(){
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
 }
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
 mostraPergunta();
