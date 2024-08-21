@@ -29,7 +29,7 @@ const perguntas = [
             },
             {
                 texto: "Defesa de terras e direitos territoriais",
-                afirmacao: "A proteção e a gestão de seus territórios garantem a preservação de vastas áreas de florestas"
+                afirmacao: "A proteção e a gestão de seus territórios garantem a preservação de vastas áreas de florestas."
             }
              
 
@@ -56,9 +56,14 @@ let perguntaAtual;
 let historiaFinal = "";
 
 function mostraPergunta(){
+    if(atual >= perguntas.length){
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
+    textoResultado.textContent = "";
     mostraAlternativas();
 }
 
@@ -73,9 +78,14 @@ function mostraAlternativas(){
 
 function respostaSelecionada(opcaoSelecionada){
     const afirmacao = opcaoSelecionada.afirmacao;
-    historiaFinal = afirmacao;
+    historiaFinal += afirmacao + " ";
     atual++;
     mostraPergunta();
 }
-
 mostraPergunta();
+
+function mostraResultado(){
+    caixaPerguntas.textContent = "Em 2040...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
